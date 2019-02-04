@@ -1,19 +1,24 @@
+import javafx.application.Application;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 public class App {
-    Client client;
-    ConsoleEventLogger eventLogger ;
+    private Client client;
+    private EventLogger eventLogger ;
+
+    public App(Client client, EventLogger eventLogger) {
+        this.client = client;
+        this.eventLogger = eventLogger;
+    }
 
     private void logEvent(String msg){
         String message = msg.replaceAll(client.getId(), client.getFullName());
-
-        eventLogger = new ConsoleEventLogger();
         eventLogger.logEvent(message);
-
     }
 
     public static void main(String[] args) {
-        App app = new App();
-        app.client = new Client("1", "Ziggy Stardust");
-
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("application-context.xml");
+        App app = (App) applicationContext.getBean("app");
         app.logEvent("I'm a starman, 1 !!!");
 
     }
