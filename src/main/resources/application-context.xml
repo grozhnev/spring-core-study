@@ -23,5 +23,8 @@
 
     <bean id="dateFormat" class="java.text.DateFormat" factory-method="getDateTimeInstance"/>
 
+    <bean id="fileEventLogger" class="FileEventLogger" init-method="init"/>
+
+    <bean class="CacheFileLogger" destroy-method="destroy" />
 
 </beans>

@@ -7,6 +7,10 @@ public class Event {
     Date date;
     DateFormat dateFormat;
 
+    public Event(Date date) {
+        this.date = date;
+    }
+
     public Event(Date date, DateFormat dateFormat) {
         this.date = date;
         this.dateFormat = dateFormat;
