@@ -1,16 +1,13 @@
 import java.util.List;
 
-public class CacheFileLogger extends FileEventLogger {
+public class CacheFileEventLogger extends FileEventLogger {
 
     Integer cacheSize;
     List<Event> cache;
 
-    public CacheFileLogger(Integer cacheSize) {
+    public CacheFileEventLogger(String fileName, Integer cacheSize) {
+        super(fileName);
         this.cacheSize = cacheSize;
-    }
-
-    public CacheFileLogger() {
-
     }
 
     @Override

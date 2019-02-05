@@ -8,9 +8,6 @@ public class FileEventLogger implements EventLogger {
     File file;
     String fileName;
 
-    public FileEventLogger() {
-
-    }
 
     public FileEventLogger(String fileName) {
         this.fileName = fileName;
