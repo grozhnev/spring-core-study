@@ -1,20 +1,20 @@
 import java.text.DateFormat;
 import java.util.Date;
 
-public class Event {
+public class  Event {
     Integer id;
     String msg;
     Date date;
-    DateFormat dateFormat;
+//    DateFormat dateFormat;
 
     public Event(Date date) {
         this.date = date;
     }
 
-    public Event(Date date, DateFormat dateFormat) {
-        this.date = date;
-        this.dateFormat = dateFormat;
-    }
+//    public Event(Date date, DateFormat dateFormat) {
+//        this.date = date;
+//        this.dateFormat = dateFormat;
+//    }
 
 
     public String getMsg() {
@@ -27,6 +27,6 @@ public class Event {
 
     @Override
     public String toString() {
-        return "Event{" + "id=" + id + ", msg='" + msg + '\'' + ", date=" + date + ", dateFormat=" + dateFormat + '}';
+        return "Event{" + "id=" + id + ", msg='" + msg + '\'' + ", date=" + date + /*", dateFormat=" + dateFormat + */'}';
     }
 }
