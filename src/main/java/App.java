@@ -77,10 +77,16 @@ public class App {
 
 
 
-    public static void main(String[] args) {
+
+
+    public static void main(String[] args) throws IOException {
         ConfigurableApplicationContext context = new ClassPathXmlApplicationContext("application-context.xml");
-//        App app = (App) context.getBean("app");
+        App app = (App) context.getBean("app");
 //        app.logEvent("I'm a starman, 1 !!!");
+
+        app.logEvent(EventType.INFO, "INFO");
+        app.logEvent(EventType.ERROR, "ERROR");
+
 
         context.close();
     }
