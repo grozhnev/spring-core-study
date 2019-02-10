@@ -1,3 +1,4 @@
+import javax.annotation.PreDestroy;
 import java.util.List;
 
 public class CacheFileEventLogger extends FileEventLogger {
@@ -19,6 +20,7 @@ public class CacheFileEventLogger extends FileEventLogger {
         }
     }
 
+    @PreDestroy
     public void destroy(){
         if(!cache.isEmpty()){
             writeEventsFromCache();

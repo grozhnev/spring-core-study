@@ -1,6 +1,12 @@
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
 import java.text.DateFormat;
 import java.util.Date;
 
+
+@Component("Event")
+@Scope("prototype")
 public class  Event {
     Integer id;
     String msg;

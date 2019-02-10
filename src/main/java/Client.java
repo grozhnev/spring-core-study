@@ -1,8 +1,19 @@
+import org.springframework.beans.factory.annotation.Value;
+
 public class Client {
+
+    @Value("${id}")
     String id;
+
+    @Value("${name}")
     String fullName;
 
+    @Value("${greeting}")
     String greeting;
+
+    public Client() {
+
+    }
 
     public void setGreeting(String greeting) {
         this.greeting = greeting;

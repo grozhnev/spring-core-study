@@ -1,5 +1,6 @@
 import org.apache.commons.io.FileUtils;
 
+import javax.annotation.PostConstruct;
 import java.io.File;
 import java.io.IOException;
 
@@ -13,6 +14,7 @@ public class FileEventLogger implements EventLogger {
         this.fileName = fileName;
     }
 
+    @PostConstruct
     public void init() throws IOException {
         this.file = new File(fileName);
         file.canWrite();

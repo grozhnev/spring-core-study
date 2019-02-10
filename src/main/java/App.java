@@ -1,6 +1,9 @@
 import javafx.application.Application;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.io.IOException;
@@ -8,8 +11,14 @@ import java.util.Date;
 import java.util.Map;
 
 public class App {
+
+    @Autowired
     private Client client;
+
+    @Autowired
+    @Qualifier("fileEventLogger")
     private EventLogger defaultLogger;
+
     private Map<EventType, EventLogger> loggers;
 
     public App(Map<EventType, EventLogger> loggers) {
@@ -80,14 +89,25 @@ public class App {
 
 
     public static void main(String[] args) throws IOException {
-        ConfigurableApplicationContext context = new ClassPathXmlApplicationContext("application-context.xml");
-        App app = (App) context.getBean("app");
-//        app.logEvent("I'm a starman, 1 !!!");
+//        ConfigurableApplicationContext context = new ClassPathXmlApplicationContext("application-context.xml");
+//        App app = (App) context.getBean("app");
+////        app.logEvent("I'm a starman, 1 !!!");
+//
+//        app.logEvent(EventType.INFO, "INFO");
+//        app.logEvent(EventType.ERROR, "ERROR");
+//
+//
+//        context.close();
 
-        app.logEvent(EventType.INFO, "INFO");
-        app.logEvent(EventType.ERROR, "ERROR");
+
+        ApplicationContext context = new AnnotationConfigApplicationContext(/*AppConfiguration.class*/);
+
+        ((AnnotationConfigApplicationContext) context).register(AppConfiguration.class);
+        ((AnnotationConfigApplicationContext) context).refresh();
+
+        ((AnnotationConfigApplicationContext) context).scan("/home/morgan/Code/java/spring-core_2019/src/main/java");
+        ((AnnotationConfigApplicationContext) context).refresh();
 
 
-        context.close();
     }
 }
