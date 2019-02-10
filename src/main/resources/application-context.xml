@@ -1,19 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+       xmlns:p="http://www.springframework.org/schema/p"     xmlns:c="http://www.springframework.org/schema/c"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
 
     <import resource="loggers.xml"/>
 
-    <bean id="client" class="Client">
+    <bean id="client" class="Client" c:id="${id}" c:fullName="${name}" p:greeting="${greeting}"/>
         <!--<constructor-arg index="0" value="1"/>-->
         <!--<constructor-arg index="1" value="Ziggy Stardust"/>-->
         <!--<property name="greeting" value="Hey there !"/>-->
 
-        <constructor-arg name="id" value="${id}"/>
-        <constructor-arg name="fullName" value="${name}"/>
-        <property name="greeting" value="${greeting}" />
-    </bean>
+        <!--<constructor-arg name="id" value="${id}"/>-->
+        <!--<constructor-arg name="fullName" value="${name}"/>-->
+        <!--<property name="greeting" value="${greeting}" />-->
+
+
+  <!--  </bean>-->
 
     <bean id="event" class="Event" scope="prototype">
         <constructor-arg>
@@ -23,7 +28,7 @@
 
     <bean id="dateFormat" class="java.text.DateFormat" factory-method="getDateTimeInstance"/>
 
-    <bean id="app" class="App">
+    <bean id="app" class="App" >
         <!--<constructor-arg index="0" ref="client"/>-->
         <!--<constructor-arg index="1" ref="consoleEventLogger"/>-->
 
