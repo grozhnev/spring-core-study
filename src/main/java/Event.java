@@ -2,6 +2,8 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import java.text.DateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 
@@ -22,6 +24,15 @@ public class  Event {
 //        this.dateFormat = dateFormat;
 //    }
 
+    public static boolean isDay(){
+        int time = LocalDateTime.now().getHour() * 60 + LocalDateTime.now().getMinute();
+
+        if((8 * 60 < time) || (17 * 60 > time)){
+            return true;
+        } else {
+            return false;
+        }
+    }
 
     public String getMsg() {
         return msg;

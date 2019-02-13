@@ -21,9 +21,9 @@ public class App {
 
     private Map<EventType, EventLogger> loggers;
 
-    public App(Map<EventType, EventLogger> loggers) {
+ /*   public App(Map<EventType, EventLogger> loggers) {
         this.loggers = loggers;
-    }
+    }*/
 
     public App(Client client, EventLogger eventLogger, Map<EventType, EventLogger> loggers) {
         this.client = client;
@@ -89,24 +89,25 @@ public class App {
 
 
     public static void main(String[] args) throws IOException {
-//        ConfigurableApplicationContext context = new ClassPathXmlApplicationContext("application-context.xml");
-//        App app = (App) context.getBean("app");
-////        app.logEvent("I'm a starman, 1 !!!");
+        ConfigurableApplicationContext context = new ClassPathXmlApplicationContext("application-context.xml");
+        App app = (App) context.getBean("app");
+//        app.logEvent("I'm a starman, 1 !!!");
+
+        app.logEvent(EventType.INFO, "INFO");
+        app.logEvent(EventType.ERROR, "ERROR");
+
+
+        context.close();
+
+
+
+//        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(/*AppConfiguration.class*/);
+
+//        context.register(AppConfiguration.class);
+////        context.refresh();
 //
-//        app.logEvent(EventType.INFO, "INFO");
-//        app.logEvent(EventType.ERROR, "ERROR");
-//
-//
-//        context.close();
-
-
-        ApplicationContext context = new AnnotationConfigApplicationContext(/*AppConfiguration.class*/);
-
-        ((AnnotationConfigApplicationContext) context).register(AppConfiguration.class);
-        ((AnnotationConfigApplicationContext) context).refresh();
-
-        ((AnnotationConfigApplicationContext) context).scan("/home/morgan/Code/java/spring-core_2019/src/main/java");
-        ((AnnotationConfigApplicationContext) context).refresh();
+//        context.scan("/home/morgan/Code/java/spring-core_2019/src/main/java");
+//        context.refresh();
 
 
     }
